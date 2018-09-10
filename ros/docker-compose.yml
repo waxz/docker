@@ -1,0 +1,46 @@
+version: '3'
+services:
+  ros:
+    build: 
+      context: .
+      args:
+        - buildno=0.1
+    image: accelerate/indigo:0.1
+    ports:
+      - "11311:11311"
+      - "5000:5000"
+      
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
+      - /dev/usb:/dev/usb
+      - ~/.ros:/root/.ros
+      - ~/.rviz:/root/.rviz
+      - ~/workspace/catkin_ws:/ros/catkin_ws
+      - ./shell/.bashrc:/root/.bashrc
+      - ./shell/ros_entrypoint.sh:/ros_entrypoint.sh
+
+      - ./shell/app.py:/ros/catkin_ws/app.py
+      - ./shell/requirements.txt:/ros/catkin_ws/requirements.txt
+      
+
+    entrypoint: /ros_entrypoint.sh
+
+    environment:
+      - RACK_ENV=development
+      - SHOW=true
+      - QT_X11_NO_MITSHM=1
+      - DISPLAY
+
+
+    stop_signal: SIGKILL
+    container_name: ros
+    network_mode: "host"
+    userns_mode: "host"
+
+
+    ipc: host
+    privileged: true
+    read_only: false
+    stdin_open: true
+    tty: true
