@@ -3,9 +3,11 @@ FROM osrf/ros:indigo-desktop-full
 # RUN apt-get  update && apt-get install -y nano openssh-server
 
 # RUN apt-get update && apt-get install -y tmux nano unzip && rm -rf /var/likb/apt/lists/*
-RUN apt-get update && apt-get install -y python-pip  && rm -rf /var/likb/apt/lists/*
-
-
+RUN apt-get update && apt-get install -y python-pip  \
+ ros-indigo-ecl-config ros-indigo-ecl-errors \
+ ros-indigo-ecl-time-lite ros-indigo-sophus ros-indigo-move-base-msgs ros-indigo-bfl \
+ libsdl-image1.2-dev ros-indigo-sound-play \
+&& rm -rf /var/likb/apt/lists/*
 # Set the working directory 
 WORKDIR /ros/catkin_ws
 
