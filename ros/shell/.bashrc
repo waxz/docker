@@ -6,7 +6,7 @@ ros-env(){
 # setup ros environment
 ros-env
 
-echo "run ros_entrypoint ... done"
+#echo "run ros_entrypoint ... done"
 
 #set environment
 # fix x11 bug
