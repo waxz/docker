@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y python-pip  \
  ros-indigo-ecl-config ros-indigo-ecl-errors \
  ros-indigo-ecl-time-lite ros-indigo-sophus ros-indigo-move-base-msgs ros-indigo-bfl \
  libsdl-image1.2-dev ros-indigo-sound-play \
+   google-mock libboost-all-dev libeigen3-dev libgflags-dev libgoogle-glog-dev liblua5.2-dev libprotobuf-dev libsuitesparse-dev libwebp-dev ninja-build protobuf-compiler python-sphinx ros-indigo-tf2-eigen libatlas-base-dev libsuitesparse-dev liblapack-dev \
 && rm -rf /var/likb/apt/lists/*
 # Set the working directory 
 WORKDIR /ros/catkin_ws
